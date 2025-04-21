@@ -15,7 +15,7 @@ Em desenvolvimento
 ## Objetivo do software
 Desenvolver um sistema de controle de estoque simples e eficiente para pequenas empresas, permitindo o cadastro de produtos, categorias, entradas e saídas de estoque, além de gerar relatórios básicos de controle.
 
-## 🧩 Funcionalidades do sistema
+## Funcionalidades do sistema
 - **Cadastro de produtos**: Nome, descrição, preço, quantidade.
 - **Cadastro de categorias**: Agrupamento dos produtos por categorias.
 - **Controle de entradas e saídas de estoque**: Registro de movimentações de produtos no estoque (compra/venda).
