@@ -6,6 +6,7 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;600;700&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="/css/fonteTexto.css"/>
+        <link rel="stylesheet" href="/css/botoes.css">
     </head>
     <body class="bg-light">
 
@@ -27,6 +28,7 @@
                             <th>Data</th>
                             <th>Quantidade</th>
                             <th>Observação</th>
+                            <th>Tipo</th>
                         </tr>
                     </thead>
                     <tbody id="tabela-estoque">
@@ -36,6 +38,7 @@
                             <td th:text="${#temporals.format(mov.data, 'dd/MM/yyyy')}">Data</td>
                             <td th:text="${mov.quantidade}">Qtd</td>
                             <td th:text="${mov.observacao}">Obs</td>
+                            <td th:text="${mov.tipo}">Tipo</td>
                         </tr>
                     </tbody>
                 </table>
@@ -66,8 +69,14 @@
                     </div>
                 </form>
             </div>
-            
-            <a href="/estoque/novo" class="btn btn-primary">Adicionar Relatório</a>
+            <div>
+                <a href="/estoque/novo" class="btn btn-primary">Adicionar Relatório</a>
+            </div>
+
+            <br>
+            <div class="text-left">
+                <a href="/estoque/inicial" class="btn btn-inicial">Página Inicial</a>
+            </div>
         </main>
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>

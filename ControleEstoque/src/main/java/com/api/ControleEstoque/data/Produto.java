@@ -17,13 +17,14 @@ public class Produto {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
+    
     private String nome;
     private String descricao;
     private Double preco;
     private Integer quantidade;
     private Integer estoqueMinimo;
     
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "categoria_id")
     private Categoria categoria;
     

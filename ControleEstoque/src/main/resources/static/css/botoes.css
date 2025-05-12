@@ -1,9 +1,14 @@
 .btn-salvar {
-    background-color: #b8ff00;
+        background-color: #b8ff00;
     color: black;
 }
 
 .btn-cancelar {
     background-color: #ff0055;
+    color: white;
+}
+
+.btn-inicial {
+    background-color: #2A4759;
     color: white;
 }

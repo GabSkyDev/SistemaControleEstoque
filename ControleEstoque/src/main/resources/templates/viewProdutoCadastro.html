@@ -48,10 +48,14 @@
                     </div>
                     <div class="col-md-6">
                         <label>Categoria:</label>
-                        <select class="form-select">
+                        <select th:field="*{categoria}" class="form-select">
                             <option value="">Selecione a categoria.</option>
-                            <option value="teste">Teste</option>
+                            <option th:each="cat : ${categorias}"
+                                    th:value="${cat.id}" 
+                                    th:text="${cat.nome}">
+                            </option>
                         </select>
+
                     </div>
                 </div>
 
@@ -59,9 +63,11 @@
                     <button type="submit" class="btn btn-salvar">Salvar</button>
                     <a href="/produto/listagem" class="btn btn-cancelar">Cancelar</a>
                 </div>
-
             </form>
-        </main>
+            <br>
+            <div class="text-left">
+                <a href="/estoque/inicial" class="btn btn-inicial">Página Inicial</a>
+            </div>
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     </body>

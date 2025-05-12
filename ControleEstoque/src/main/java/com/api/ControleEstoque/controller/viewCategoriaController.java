@@ -1,23 +1,25 @@
 package com.api.ControleEstoque.controller;
 
 import com.api.ControleEstoque.data.Categoria;
+import com.api.ControleEstoque.service.CategoriaService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
 
 @Controller
 @RequestMapping("/categoria")
 public class viewCategoriaController {
-
-    private List<Categoria> categorias = new ArrayList<>();
-    private int proximoId = 1;
+    
+    @Autowired
+    CategoriaService categoriaService;
 
     // Página de listagem
     @GetMapping("/listagem")
     public String listarCategorias(Model model) {
+        List<Categoria> categorias = categoriaService.listarTodas();
         model.addAttribute("categorias", categorias);
         return "viewCategoriaListagem";
     }
@@ -32,28 +34,15 @@ public class viewCategoriaController {
     // Envio do formulário
     @PostMapping("/salvar")
     public String salvarCategoria(@ModelAttribute Categoria categoria) {
-        if (categoria.getId() == null) {
-            categoria.setId(proximoId++);
-            categorias.add(categoria);
-        } else {
-            for (int i = 0; i < categorias.size(); i++) {
-                if (categorias.get(i).getId().equals(categoria.getId())) {
-                    categorias.set(i, categoria);
-                    break;
-                }
-            }
-        }
+        categoriaService.salvar(categoria);
         return "redirect:/categoria/listagem";
     }
 
     // Editar categoria
     @GetMapping("/editar/{id}")
     public String editarCategoria(@PathVariable Integer id, Model model) {
-        Categoria categoria = categorias.stream()
-                .filter(c -> c.getId().equals(id))
-                .findFirst()
-                .orElseThrow(() -> new IllegalArgumentException("ID da categoria inválido: " + id));
-
+        Categoria categoria = categoriaService.buscarPorId(id);
+        categoriaService.deletarPorId(id); 
         model.addAttribute("categoria", categoria);
         return "viewCategoriaCadastro";
     }
@@ -61,7 +50,7 @@ public class viewCategoriaController {
     // Excluir categoria
     @GetMapping("/excluir/{id}")
     public String excluirCategoria(@PathVariable Integer id) {
-        categorias.removeIf(c -> c.getId().equals(id));
+        categoriaService.deletarPorId(id);
         return "redirect:/categoria/listagem";
     }
 }
