@@ -1,7 +1,7 @@
 # 📦 Sistema de Controle de Estoque para Pequenas Empresas
 
 ## Status do projeto
-Em desenvolvimento
+Concluído
 
 ## Tecnologias utilizadas
 - **Backend**: Spring Boot, Spring MVC, Spring Data JPA
